@@ -15,6 +15,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.itis.itis_android_inception_24.MainActivity
 import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.databinding.FragmentInitBinding
+import ru.itis.itis_android_inception_24.screens.mainpage.MainPageFragment
+import ru.itis.itis_android_inception_24.screens.samplebs.BottomSheetFragment
+import ru.itis.itis_android_inception_24.utils.NavigationAction
 
 class InitFragment : Fragment(R.layout.fragment_init) {
 
@@ -45,20 +48,25 @@ class InitFragment : Fragment(R.layout.fragment_init) {
             val color = ContextCompat.getColor(requireContext(), colorRes)
             viewBinding.root.setBackgroundColor(color)
         }
+
+
     }
 
     private fun initViews(firstParam: String) {
         with(viewBinding) {
             actionBtn.setOnClickListener {
-                (requireActivity() as? MainActivity)?.doSomeLogic(TAG)
+                (requireActivity() as? MainActivity)?.navigate(
+                    MainPageFragment(),
+                    MainPageFragment.TAG,
+                    action = NavigationAction.REPLACE,
+                )
             }
-
-            if (firstParam == "firstStr") {
-                sendImplicitIntentBtn.setOnClickListener {
-                    Toast.makeText(requireContext(), "Bottom fragment", Toast.LENGTH_SHORT).show()
+            launchSecondActivityBtn.setOnClickListener {
+                val dialog = BottomSheetFragment().apply {
+                    isCancelable = true
                 }
-            } else {
-                sendImplicitIntentBtn.isInvisible = true
+
+                dialog.show(childFragmentManager, BottomSheetFragment.TAG)
             }
         }
     }

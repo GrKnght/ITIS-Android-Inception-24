@@ -2,44 +2,37 @@ package ru.itis.itis_android_inception_24
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import by.kirich1409.viewbindingdelegate.viewBinding
+import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
 import ru.itis.itis_android_inception_24.screens.init.InitFragment
+import ru.itis.itis_android_inception_24.screens.mainpage.MainPageFragment
+import ru.itis.itis_android_inception_24.utils.FragmentsLifecycleListener
+import ru.itis.itis_android_inception_24.utils.NavigationAction
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val viewBinding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind)
 
-    private val mainContainerId: Int = R.id.main_fragment_container
+    override val mainContainerId: Int = R.id.main_fragment_container
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportFragmentManager.registerFragmentLifecycleCallbacks(
+            FragmentsLifecycleListener(),
+            false
+        )
 
-        supportFragmentManager.beginTransaction()
-            .add(
-                mainContainerId,
-                InitFragment.getInstance(
-                    param1 = "firstStr",
-                    param2 = "secondStr",
-                    fragmentBg = R.color.purple_200
-                ), InitFragment.TAG
-            )
-            .commit()
-
-        supportFragmentManager.beginTransaction()
-            .replace(
-                mainContainerId,
-                InitFragment.getInstance(
-                    param1 = "secondStr",
-                    param2 = "thirdStr",
-                    fragmentBg = R.color.teal_200,
-                ), "SecondInit"
-            )
-            .addToBackStack(null)
-            .commit()
-
+        navigate(
+            destination = InitFragment.getInstance(
+                param1 = "firstStr",
+                param2 = "secondStr",
+                fragmentBg = R.color.purple_200
+            ),
+            destinationTag = InitFragment.TAG,
+            action = NavigationAction.ADD
+        )
     }
 
     fun doSomeLogic(tag: String) {
