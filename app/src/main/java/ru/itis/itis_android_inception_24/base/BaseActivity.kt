@@ -2,7 +2,6 @@ package ru.itis.itis_android_inception_24.base
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.utils.NavigationAction
 
 abstract class BaseActivity : AppCompatActivity() {
