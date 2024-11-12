@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -12,6 +15,7 @@ import ru.itis.itis_android_inception_24.adapter.recycler.ImagesContentAdapter
 import ru.itis.itis_android_inception_24.databinding.FragmentListContentBinding
 import ru.itis.itis_android_inception_24.repository.ScreensContentRepository
 import ru.itis.itis_android_inception_24.ui.decorators.SimpleHorizontalDecorator
+import ru.itis.itis_android_inception_24.utils.getValueInDp
 import kotlin.random.Random
 
 class ListContentFragment : Fragment(R.layout.fragment_list_content) {
@@ -47,14 +51,30 @@ class ListContentFragment : Fragment(R.layout.fragment_list_content) {
     }
 
     private fun initRecyclerView(requestManager: RequestManager) {
+        val dataList =
+            ScreensContentRepository.getListContentScreenInitialData(ctx = requireContext())
         rvAdapter = ImagesContentAdapter(
             requestManager = requestManager,
             action = ::onItemClick,
-            items = ScreensContentRepository.getListContentScreenInitialData(ctx = requireContext())
+            items = dataList
         )
         with(viewBinding) {
             mainRecycler.adapter = rvAdapter
-            mainRecycler.addItemDecoration(SimpleHorizontalDecorator())
+
+            mainRecycler.layoutManager = GridLayoutManager(
+                requireContext(), 3, RecyclerView.VERTICAL, false
+            )
+            mainRecycler.addItemDecoration(
+                SimpleHorizontalDecorator(
+                    marginValue = getValueInDp(value = 16f, requireContext()).toInt()
+                )
+            )
+            mainRecycler.addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(),
+                    RecyclerView.VERTICAL
+                )
+            )
         }
     }
 

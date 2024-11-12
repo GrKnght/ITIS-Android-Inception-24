@@ -7,7 +7,7 @@ import ru.itis.itis_android_inception_24.databinding.ItemRvWithPicBinding
 import ru.itis.itis_android_inception_24.model.ListPictureItemModel
 
 class ImageViewHolder(
-    private val viewBinding: ItemRvWithPicBinding,
+    val viewBinding: ItemRvWithPicBinding,
     private val requestManager: RequestManager,
     private val action: (Int) -> Unit
 ) : RecyclerView.ViewHolder(viewBinding.root) {
@@ -24,7 +24,7 @@ class ImageViewHolder(
         requestManager.load(itemData.imageUrl)
             .into(viewBinding.pictureIv)
 
-        viewBinding.divider.isVisible = adapterPosition != count - 1
+       // viewBinding.divider.isVisible = adapterPosition != count - 1
 
 
         // viewBinding.root.setBackgroundColor(itemData.background)

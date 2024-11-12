@@ -5,7 +5,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
 import ru.itis.itis_android_inception_24.screens.list.ListContentFragment
-import ru.itis.itis_android_inception_24.utils.FragmentsLifecycleListener
+import ru.itis.itis_android_inception_24.screens.multipleTypesList.MultipleTypesFragment
 import ru.itis.itis_android_inception_24.utils.NavigationAction
 import ru.itis.itis_android_inception_24.utils.ScreenTags
 
@@ -17,15 +17,11 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(viewBinding.root)
-        supportFragmentManager.registerFragmentLifecycleCallbacks(
-            FragmentsLifecycleListener(),
-            false
-        )
+        setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             navigate(
-                destination = ListContentFragment(),
-                destinationTag = ScreenTags.LIST_CONTENT_TAG,
+                destination = MultipleTypesFragment(),
+                destinationTag = ScreenTags.MULTIPLE_TYPES_LIST_TAG,
                 action = NavigationAction.ADD
             )
         }
