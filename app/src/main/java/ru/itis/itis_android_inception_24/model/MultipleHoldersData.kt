@@ -17,3 +17,5 @@ class SecondHolderData(
     val descText: String,
     val imageUrl: String,
 ) : MultipleHoldersData(id, headerText)
+
+class ButtonHolderData(id: String, headerText: String) : MultipleHoldersData(id, headerText)

@@ -6,4 +6,5 @@
     <string name="chooser_title">Выберите приложение</string>
 
     <string name="main_page_header_text">Главный экран</string>
+    <string name="update_list_btn_text">Обновить список</string>
 </resources>

@@ -3,6 +3,7 @@ package ru.itis.itis_android_inception_24.ui.decorators
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import ru.itis.itis_android_inception_24.ui.viewholder.ButtonTypeViewHolder
 import ru.itis.itis_android_inception_24.ui.viewholder.SecondTypeViewHolder
 
 class SimpleHorizontalDecorator(
@@ -17,10 +18,17 @@ class SimpleHorizontalDecorator(
     ) {
         super.getItemOffsets(outRect, view, parent, state)
         val holder = parent.getChildViewHolder(view)
-        if (holder is SecondTypeViewHolder) {
+        if (holder is SecondTypeViewHolder || holder is ButtonTypeViewHolder) {
             outRect.apply {
                 left = marginValue
                 right = marginValue
+            }
+
+            if (holder is ButtonTypeViewHolder) {
+                outRect.apply {
+                    top = marginValue
+                    bottom = marginValue * 2
+                }
             }
         }
     }
