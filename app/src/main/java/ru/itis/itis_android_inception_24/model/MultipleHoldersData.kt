@@ -19,3 +19,12 @@ class SecondHolderData(
 ) : MultipleHoldersData(id, headerText)
 
 class ButtonHolderData(id: String, headerText: String) : MultipleHoldersData(id, headerText)
+
+class TwoButtonHolderData(id: String, headerText: String) : MultipleHoldersData(id, headerText)
+
+class SimpleTextHolderData(
+    val text: String,
+    id: String,
+    headerText: String,
+) : MultipleHoldersData(id, headerText)
+

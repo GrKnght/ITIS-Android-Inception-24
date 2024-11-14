@@ -4,6 +4,7 @@ import android.os.Bundle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
+import ru.itis.itis_android_inception_24.screens.grid.GridRVFragment
 import ru.itis.itis_android_inception_24.screens.list.ListContentFragment
 import ru.itis.itis_android_inception_24.screens.multipleTypesList.MultipleTypesFragment
 import ru.itis.itis_android_inception_24.utils.NavigationAction
@@ -20,7 +21,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             navigate(
-                destination = MultipleTypesFragment(),
+                destination = GridRVFragment(),
                 destinationTag = ScreenTags.MULTIPLE_TYPES_LIST_TAG,
                 action = NavigationAction.ADD
             )
