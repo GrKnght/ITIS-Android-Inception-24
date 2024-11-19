@@ -29,4 +29,15 @@ class SampleDiffUtil(
 
         return oldItem.headerText == newItem.headerText
     }
+
+    override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
+        val oldItem = oldList[oldItemPosition]
+        val newItem = newList[newItemPosition]
+
+        if (oldItem.isFavorite != newItem.isFavorite) {
+            return true
+        }
+
+        return super.getChangePayload(oldItemPosition, newItemPosition)
+    }
 }

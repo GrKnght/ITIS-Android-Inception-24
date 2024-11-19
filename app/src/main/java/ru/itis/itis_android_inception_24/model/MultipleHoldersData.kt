@@ -3,6 +3,7 @@ package ru.itis.itis_android_inception_24.model
 sealed class MultipleHoldersData(
     open val id: String,
     open val headerText: String,
+    open val isFavorite: Boolean = false,
 )
 
 class FirstHolderData(

@@ -61,9 +61,6 @@ class ListContentFragment : Fragment(R.layout.fragment_list_content) {
         with(viewBinding) {
             mainRecycler.adapter = rvAdapter
 
-            mainRecycler.layoutManager = GridLayoutManager(
-                requireContext(), 3, RecyclerView.VERTICAL, false
-            )
             mainRecycler.addItemDecoration(
                 SimpleHorizontalDecorator(
                     marginValue = getValueInDp(value = 16f, requireContext()).toInt()

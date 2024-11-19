@@ -4,9 +4,8 @@ import android.os.Bundle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
-import ru.itis.itis_android_inception_24.screens.grid.GridRVFragment
-import ru.itis.itis_android_inception_24.screens.list.ListContentFragment
-import ru.itis.itis_android_inception_24.screens.multipleTypesList.MultipleTypesFragment
+import ru.itis.itis_android_inception_24.screens.payloadAdapter.PayloadAdapterScreenFragment
+import ru.itis.itis_android_inception_24.screens.viewpager.ViewPagerFragment
 import ru.itis.itis_android_inception_24.utils.NavigationAction
 import ru.itis.itis_android_inception_24.utils.ScreenTags
 
@@ -21,7 +20,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             navigate(
-                destination = GridRVFragment(),
+                destination = ViewPagerFragment(),
                 destinationTag = ScreenTags.MULTIPLE_TYPES_LIST_TAG,
                 action = NavigationAction.ADD
             )
