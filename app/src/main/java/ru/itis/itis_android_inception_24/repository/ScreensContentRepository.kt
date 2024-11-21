@@ -3,11 +3,14 @@ package ru.itis.itis_android_inception_24.repository
 import android.content.Context
 import androidx.core.content.ContextCompat
 import ru.itis.itis_android_inception_24.R
+import ru.itis.itis_android_inception_24.model.AnswerModel
 import ru.itis.itis_android_inception_24.model.ButtonHolderData
 import ru.itis.itis_android_inception_24.model.FirstHolderData
 import ru.itis.itis_android_inception_24.model.ListPictureItemModel
 import ru.itis.itis_android_inception_24.model.MultipleHoldersData
+import ru.itis.itis_android_inception_24.model.QuestionModel
 import ru.itis.itis_android_inception_24.model.SecondHolderData
+import kotlin.random.Random
 
 object ScreensContentRepository {
 
@@ -207,5 +210,71 @@ object ScreensContentRepository {
             id = "button_1",
             headerText = "some_text"
         )
+    )
+
+    fun getQuestionnaireList(questionsCount: Int): List<QuestionModel> {
+        val questionsList = mutableListOf<QuestionModel>()
+        val appearedValues = mutableSetOf<Int>()
+        repeat(questionsCount) { count ->
+            if (appearedValues.size == questions.size) {
+                appearedValues.clear()
+            }
+            val index =
+                generateSequence { questions.indices.random() }.first { appearedValues.add(it) }
+            questionsList.add(QuestionModel(
+                questionId = "question_id_$count",
+                questionText = "Кто автор произведения \"${questions[index]}\"",
+                answers = mutableListOf<AnswerModel>().also { answersList ->
+                    val appeared = mutableSetOf<Int>()
+                    repeat(4) {
+                        do {
+                            val random = Random.nextInt(0, 4)
+                        } while (!appeared.add(random))
+
+                    }
+                    appeared.forEach {
+                        answersList.add(
+                            AnswerModel(
+                                answerId = "answer_${it}_question_$count",
+                                answerText = answers[it]
+                            )
+                        )
+                    }
+                    answersList.add(
+                        AnswerModel(
+                            answerId = "no_correct_id",
+                            answerText = "Нет правильного ответа"
+                        )
+                    )
+                }
+            ))
+        }
+        return questionsList
+    }
+
+    private val questions = listOf(
+        "Мечтают ли андроиды об электроовцах?",
+        "Где ты был, Адам?",
+        "Умеешь ли ты свистеть, Йоханна?",
+        "Что может быть проще времени?",
+        "Зачем?",
+        "Где ты?",
+        "Любите ли вы Брамса?",
+        "Сколько стоит человек?",
+        "Не все ли равно, что думают другие?",
+        "Муля, кого ты привез?"
+    )
+
+    private val answers = listOf(
+        "Филип Киндред Ди",
+        "Генрих Бёлль",
+        "Ульф Старк",
+        "Клиффорд Саймак",
+        "Николай Попов",
+        "Марк Леви",
+        "Дарио Салас Соммэр",
+        "Франсуаза Саган",
+        "Ричард Фейнман",
+        "Виктория Токарева"
     )
 }

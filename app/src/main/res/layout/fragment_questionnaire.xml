@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/question_tv"
         android:layout_width="0dp"
-        android:text="Какой-то вопрос"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Какой-то случайный вопрос?" />
 
-    <TextView
-        android:id="@+id/answer_1_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Рандомный ответ"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/answers_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/question_tv" />
-
-    <TextView
-        android:id="@+id/answer_2_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Рандомный ответ 2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/answer_1_tv" />
+        app:layout_constraintTop_toBottomOf="@id/question_tv"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_answer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

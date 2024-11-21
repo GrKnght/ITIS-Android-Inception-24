@@ -9,10 +9,15 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="green_200">#50F64B</color>
+    <color name="green_200_25a">#4050F64B</color>
+    <color name="green_350">#D96EFB6C</color>
     <color name="green_500">#2BAF28</color>
     <color name="green_700">#1D641A</color>
 
     <color name="yellow_200">#F8D770</color>
     <color name="yellow_500">#CFAF58</color>
     <color name="yellow_700">#927E39</color>
+
+    <color name="gray_300">#54000000</color>
+    <color name="gray_500">#A8000000</color>
 </resources>
