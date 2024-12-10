@@ -11,4 +11,7 @@
     <string name="next">Следующий</string>
     <string name="previous">Предыдущий</string>
     <string name="complete">Завершить</string>
+
+    <string name="question_number_pattern">%1$s/%2$s</string>
+    <string name="answered_pattern">Вы нажали на ответ %1$d раз</string>
 </resources>

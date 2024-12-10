@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RegularText">
+      <!--  <item name="fontFamily">@font/custom_font</item> -->
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="RegularText.Text18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Bold" parent="RegularText">
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="Headline1" parent="@style/TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+</resources>
