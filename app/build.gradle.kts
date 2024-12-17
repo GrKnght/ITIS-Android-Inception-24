@@ -41,18 +41,27 @@ android {
         jvmTarget = "1.8"
     }
 
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.10"
+    }
+
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation("androidx.activity:activity:1.9.2")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.glide)
+    implementation(libs.activity)
+    implementation(libs.constraint.layout)
+
+    implementation(libs.bundles.compose.base)
+
+    implementation("androidx.activity:activity-compose:1.9.2")
 
     val vbDelegateVersion = "1.5.9"
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:$vbDelegateVersion")
