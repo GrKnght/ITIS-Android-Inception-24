@@ -4,4 +4,5 @@ enum class NotificationType {
     DEFAULT,
     PRIVATE,
     URGENT,
+    LOW,
 }

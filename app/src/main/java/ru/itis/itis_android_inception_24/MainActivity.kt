@@ -1,19 +1,13 @@
 package ru.itis.itis_android_inception_24
 
-import android.content.Intent
-import android.content.IntentFilter
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
-import ru.itis.itis_android_inception_24.screens.notificationsScreen.NotificationsFragment
-import ru.itis.itis_android_inception_24.utils.AirplaneModeReceiver
+import ru.itis.itis_android_inception_24.screens.profile.ProfileSampleFragment
 import ru.itis.itis_android_inception_24.utils.NavigationAction
 import ru.itis.itis_android_inception_24.utils.NotificationsHandler
-import ru.itis.itis_android_inception_24.utils.PermissionsHandler
 import ru.itis.itis_android_inception_24.utils.ScreenTags
 
 class MainActivity : BaseActivity() {
@@ -22,76 +16,44 @@ class MainActivity : BaseActivity() {
 
     override val mainContainerId: Int = R.id.main_fragment_container
 
-    private var airplaneReceiver: AirplaneModeReceiver? = null
-
     var notificationsHandler: NotificationsHandler? = null
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        intent?.extras?.getInt("extra_sample_key")?.let { payloadInt ->
-            if (payloadInt == 5) {
-                Toast.makeText(this, "Запущено из уведомления", Toast.LENGTH_SHORT).show()
+        val themeRes = when (intent.getIntExtra("theme_color", -1)) {
+            1 -> {
+                R.style.YellowColorTheme
             }
-        }
 
-        if (airplaneReceiver == null) {
-            airplaneReceiver = AirplaneModeReceiver()
-            val intentFilter = IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED)
-            this.registerReceiver(airplaneReceiver, intentFilter)
+            2 -> {
+                R.style.GreenColorTheme
+            }
+
+            3 -> {
+                R.style.RedColorTheme
+            }
+
+            else -> R.style.Theme_ITIS_Android_Inception_24
         }
+        setTheme(themeRes)
+        setContentView(R.layout.activity_main)
 
         if (notificationsHandler == null) {
             notificationsHandler = NotificationsHandler(this.applicationContext)
         }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val permissionsHandler = PermissionsHandler(::onSinglePermissionGranted)
-            permissionsHandler.initContracts(activity = this)
-            if (this.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                permissionsHandler.requestSinglePermission(android.Manifest.permission.POST_NOTIFICATIONS)
-            }
-
+        if (intent.getIntExtra("notification_extra", -1) == 5) {
+            Toast.makeText(this, "Запущено из уведомления", Toast.LENGTH_SHORT).show()
+            intent.removeExtra("notification_extra")
         }
-
-
-        //if ()
 
 
         if (savedInstanceState == null) {
             navigate(
-                destination = NotificationsFragment(),
-                destinationTag = ScreenTags.NOTIFICATIONS_FRAGMENT_TAG,
+                destination = ProfileSampleFragment(),
+                destinationTag = ScreenTags.PROFILE_FRAGMENT_TAG,
                 action = NavigationAction.ADD,
                 isAddToBackStack = false,
             )
         }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            101 -> {
-                println("TEST TAG - GrantResult: $grantResults")
-            }
-        }
-    }
-
-    private fun onSinglePermissionGranted() {
-
-    }
-
-    override fun onDestroy() {
-        // this.unregisterReceiver(airplaneReceiver)
-        super.onDestroy()
-        airplaneReceiver = null
     }
 }

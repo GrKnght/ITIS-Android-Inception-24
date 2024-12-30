@@ -18,6 +18,10 @@
     <color name="yellow_500">#CFAF58</color>
     <color name="yellow_700">#927E39</color>
 
+    <color name="red_200">#F87070</color>
+    <color name="red_500">#CF5858</color>
+    <color name="red_700">#923943</color>
+
     <color name="gray_300">#54000000</color>
     <color name="gray_500">#A8000000</color>
 </resources>

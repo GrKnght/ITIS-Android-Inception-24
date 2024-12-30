@@ -48,13 +48,17 @@ class NotificationsHandler(private val appCtx: Context) {
                 2
             }
 
+            NotificationType.LOW -> {
+                3
+            }
+
             else -> 0
         }
         val channelId = Constants.notificationsChannelsData[index].id
 
         val activityIntent = Intent(appCtx, MainActivity::class.java).apply {
             action = Intent.ACTION_VIEW
-            putExtra("extra_sample_key", 5)
+            putExtra("notification_extra", 5)
         }
         val pendingIntent = PendingIntent.getActivity(
             appCtx,
@@ -64,23 +68,17 @@ class NotificationsHandler(private val appCtx: Context) {
         )
         val actionIntent = Intent(appCtx, MainActivity::class.java).apply {
             action = Intent.ACTION_VIEW
-            putExtra("extra_sample_key_2", 15)
+
         }
-        val actionPendingIntent = PendingIntent.getActivity(
-            appCtx,
-            1,
-            actionIntent,
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
-        )
 
         val notificationBuilder = NotificationCompat.Builder(appCtx, channelId)
             .setSmallIcon(R.drawable.ic_favorite_active)
             .setContentTitle(data.title)
             .setChannelId(channelId)
             .setContentIntent(pendingIntent)
-            .addAction(
-                R.drawable.ic_favorite_inactive, "Title", actionPendingIntent
-            )
+//            .addAction(
+//                R.drawable.ic_favorite_inactive, "Title", actionPendingIntent
+//            )
             .setAutoCancel(true)
 
         data.message?.let { message ->

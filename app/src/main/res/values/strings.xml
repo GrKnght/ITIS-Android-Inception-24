@@ -15,4 +15,11 @@
 
     <string name="question_number_pattern">%1$s/%2$s</string>
     <string name="answered_pattern">Вы нажали на ответ %1$d раз</string>
+
+    <string-array name="notification_importance">
+        <item>Max</item>
+        <item>High</item>
+        <item>Default</item>
+        <item>Low</item>
+    </string-array>
 </resources>

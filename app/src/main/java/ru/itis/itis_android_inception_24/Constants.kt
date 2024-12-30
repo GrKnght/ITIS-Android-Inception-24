@@ -21,5 +21,10 @@ object Constants {
             name = "Акционный канал уведомлений",
             importance = NotificationManager.IMPORTANCE_MAX,
         ),
+        NotificationChannelData(
+            id = "low_channel_id",
+            name = "Тихий канал уведомлений",
+            importance = NotificationManager.IMPORTANCE_LOW,
+        ),
     )
 }
