@@ -1,44 +1,54 @@
 package ru.itis.itis_android_inception_24.utils
 
-import android.annotation.SuppressLint
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import ru.itis.itis_android_inception_24.MainActivity
+import androidx.appcompat.app.AppCompatActivity
 
 class PermissionsHandler(
-    private val activity: MainActivity,
-    onSinglePermissionGranted: (() -> Unit)? = null,
-    onSinglePermissionDenied: (() -> Unit)? = null,
-    onMultiplePermissionGranted: (() -> Unit)? = null,
+    private val onSinglePermissionGranted: (() -> Unit)? = null,
+    private val onSinglePermissionDenied: (() -> Unit)? = null,
+    private val onMultiplePermissionGranted: (() -> Unit)? = null,
 ) {
 
-    fun initContracts(mainActivity: MainActivity) {
+    private var activity: AppCompatActivity? = null
 
+    private var singlePermissionResult: ActivityResultLauncher<String>? = null
+
+    private var multiplePermissionResult: ActivityResultLauncher<Array<String>>? = null
+
+    fun initContracts(activity: AppCompatActivity) {
+        if (this.activity == null) {
+            this.activity = activity
+        }
+
+        if (singlePermissionResult == null) {
+            singlePermissionResult =
+                this.activity?.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+                    if (isGranted) {
+                        onSinglePermissionGranted?.invoke()
+                    } else {
+                        onSinglePermissionDenied?.invoke()
+                    }
+                }
+        }
+
+        if (multiplePermissionResult == null) {
+            multiplePermissionResult =
+                this.activity?.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { dataMap ->
+                    val isNotificationsGranted =
+                        dataMap[android.Manifest.permission.POST_NOTIFICATIONS] ?: false
+                    if (isNotificationsGranted) {
+                        onSinglePermissionGranted?.invoke()
+                    }
+                }
+        }
     }
 
-    private val singlePermissionResult =
-        activity.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) {
-                onSinglePermissionGranted?.invoke()
-            } else {
-                onSinglePermissionDenied?.invoke()
-            }
-        }
-
-    @SuppressLint("InlinedApi")
-    private val multiplePersmissionResult =
-        activity.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { dataMap ->
-            val isNotificationsGranted =
-                dataMap[android.Manifest.permission.POST_NOTIFICATIONS] ?: false
-            if (isNotificationsGranted) {
-                onSinglePermissionGranted?.invoke()
-            }
-        }
-
     fun requestSinglePermission(permission: String) {
-        singlePermissionResult.launch(permission)
+        singlePermissionResult?.launch(permission)
     }
 
     fun requestMultiplePermissions(permission: List<String>) {
-        multiplePersmissionResult.launch(permission.toTypedArray())
+        multiplePermissionResult?.launch(permission.toTypedArray())
     }
 }
