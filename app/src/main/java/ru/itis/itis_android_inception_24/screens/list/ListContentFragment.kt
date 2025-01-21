@@ -13,7 +13,7 @@ import com.bumptech.glide.RequestManager
 import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.adapter.recycler.ImagesContentAdapter
 import ru.itis.itis_android_inception_24.databinding.FragmentListContentBinding
-import ru.itis.itis_android_inception_24.repository.ScreensContentRepository
+import ru.itis.itis_android_inception_24.data.repository.ScreensContentRepository
 import ru.itis.itis_android_inception_24.ui.decorators.SimpleHorizontalDecorator
 import ru.itis.itis_android_inception_24.utils.getValueInDp
 import kotlin.random.Random

@@ -7,6 +7,7 @@ activity-version = "1.9.2"
 constraint-layout-version = "2.1.4"
 compose-base-version = "1.7.5"
 coroutines-version = "1.9.0"
+room_version = "2.6.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx-version" }
@@ -19,6 +20,9 @@ compose-foundation = { group = "androidx.compose.foundation", name = "foundation
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-base-version" }
 compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-base-version" }
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines-version" }
+room = { group = "androidx.room", name = "room-runtime", version.ref = "room_version" }
+room-ksp = { group = "androidx.room", name = "room-compiler", version.ref = "room_version" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room_version"}
 
 [bundles]
 compose-base = ["compose-foundation", "compose-ui", "compose-material"]

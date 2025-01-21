@@ -13,7 +13,7 @@ import ru.itis.itis_android_inception_24.MainActivity
 import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.base.BaseFragment
 import ru.itis.itis_android_inception_24.databinding.FragmentNotificationsBinding
-import ru.itis.itis_android_inception_24.repository.ScreensContentRepository
+import ru.itis.itis_android_inception_24.data.repository.ScreensContentRepository
 import ru.itis.itis_android_inception_24.utils.NotificationsHandler
 
 class NotificationsFragment : BaseFragment(R.layout.fragment_notifications) {

@@ -11,7 +11,7 @@ import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.adapter.recycler.AdapterWithMultipleHolders
 import ru.itis.itis_android_inception_24.databinding.FragmentMultipleTypesRvBinding
 import ru.itis.itis_android_inception_24.model.SecondHolderData
-import ru.itis.itis_android_inception_24.repository.ScreensContentRepository
+import ru.itis.itis_android_inception_24.data.repository.ScreensContentRepository
 import ru.itis.itis_android_inception_24.ui.decorators.SimpleHorizontalDecorator
 import ru.itis.itis_android_inception_24.utils.getValueInDp
 

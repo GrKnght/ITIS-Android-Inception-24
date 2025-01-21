@@ -2,13 +2,11 @@ package ru.itis.itis_android_inception_24
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
 import ru.itis.itis_android_inception_24.screens.profile.ProfileSampleFragment
+import ru.itis.itis_android_inception_24.screens.profile.ProfileWithDbFragment
 import ru.itis.itis_android_inception_24.utils.NavigationAction
 import ru.itis.itis_android_inception_24.utils.NotificationsHandler
 import ru.itis.itis_android_inception_24.utils.ScreenTags
@@ -52,7 +50,7 @@ class MainActivity : BaseActivity() {
 
         if (savedInstanceState == null) {
             navigate(
-                destination = ProfileSampleFragment(),
+                destination = ProfileWithDbFragment(),
                 destinationTag = ScreenTags.PROFILE_FRAGMENT_TAG,
                 action = NavigationAction.ADD,
                 isAddToBackStack = false,
