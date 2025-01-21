@@ -2,6 +2,7 @@ package ru.itis.itis_android_inception_24.repository
 
 import android.content.Context
 import androidx.core.content.ContextCompat
+import kotlinx.coroutines.delay
 import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.model.AnswerModel
 import ru.itis.itis_android_inception_24.model.ButtonHolderData
@@ -277,4 +278,9 @@ object ScreensContentRepository {
         "Ричард Фейнман",
         "Виктория Токарева"
     )
+
+    suspend fun getUserData(): List<String> {
+        delay(6000L)
+        return listOf("First", "Second", "Third")
+    }
 }

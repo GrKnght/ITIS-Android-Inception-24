@@ -2,7 +2,10 @@ package ru.itis.itis_android_inception_24
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
 import ru.itis.itis_android_inception_24.screens.profile.ProfileSampleFragment
@@ -55,5 +58,6 @@ class MainActivity : BaseActivity() {
                 isAddToBackStack = false,
             )
         }
+
     }
 }

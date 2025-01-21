@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.glide)
     implementation(libs.activity)
+    implementation(libs.coroutines.core)
     implementation(libs.constraint.layout)
 
     implementation(libs.bundles.compose.base)

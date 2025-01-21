@@ -6,19 +6,21 @@ glide-version = "4.16.0"
 activity-version = "1.9.2"
 constraint-layout-version = "2.1.4"
 compose-base-version = "1.7.5"
+coroutines-version = "1.9.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx-version" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat-version" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide-version" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity-version" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material-version"}
+material = { group = "com.google.android.material", name = "material", version.ref = "material-version" }
 constraint-layout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraint-layout-version" }
-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose-base-version"}
-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-base-version"}
-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-base-version"}
+compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "compose-base-version" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose-base-version" }
+compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose-base-version" }
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines-version" }
 
 [bundles]
-compose-base = [ "compose-foundation", "compose-ui", "compose-material"]
+compose-base = ["compose-foundation", "compose-ui", "compose-material"]
 
 [plugins]
