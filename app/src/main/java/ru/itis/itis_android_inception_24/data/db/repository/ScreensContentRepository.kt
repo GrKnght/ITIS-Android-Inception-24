@@ -1,4 +1,4 @@
-package ru.itis.itis_android_inception_24.data.repository
+package ru.itis.itis_android_inception_24.data.db.repository
 
 import android.content.Context
 import androidx.core.content.ContextCompat

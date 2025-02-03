@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
@@ -13,7 +12,7 @@ import com.bumptech.glide.RequestManager
 import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.adapter.recycler.ImagesContentAdapter
 import ru.itis.itis_android_inception_24.databinding.FragmentListContentBinding
-import ru.itis.itis_android_inception_24.data.repository.ScreensContentRepository
+import ru.itis.itis_android_inception_24.data.db.repository.ScreensContentRepository
 import ru.itis.itis_android_inception_24.ui.decorators.SimpleHorizontalDecorator
 import ru.itis.itis_android_inception_24.utils.getValueInDp
 import kotlin.random.Random

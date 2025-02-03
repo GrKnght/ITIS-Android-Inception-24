@@ -18,7 +18,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("int", "DB_VERSION", "1")
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 
     buildTypes {
@@ -51,7 +53,6 @@ android {
     buildFeatures {
         viewBinding = true
         compose = true
-        buildConfig = true
     }
 }
 

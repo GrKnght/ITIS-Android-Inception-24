@@ -10,7 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import ru.itis.itis_android_inception_24.R
 import ru.itis.itis_android_inception_24.adapter.viewpager.SampleVPAdapter
 import ru.itis.itis_android_inception_24.databinding.FragmentViewPagerBinding
-import ru.itis.itis_android_inception_24.data.repository.ScreensContentRepository
+import ru.itis.itis_android_inception_24.data.db.repository.ScreensContentRepository
 
 class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 

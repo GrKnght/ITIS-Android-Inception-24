@@ -5,7 +5,6 @@ import android.widget.Toast
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.itis.itis_android_inception_24.base.BaseActivity
 import ru.itis.itis_android_inception_24.databinding.ActivityMainBinding
-import ru.itis.itis_android_inception_24.screens.profile.ProfileSampleFragment
 import ru.itis.itis_android_inception_24.screens.profile.ProfileWithDbFragment
 import ru.itis.itis_android_inception_24.utils.NavigationAction
 import ru.itis.itis_android_inception_24.utils.NotificationsHandler
